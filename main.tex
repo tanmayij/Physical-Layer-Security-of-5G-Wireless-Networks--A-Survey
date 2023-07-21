@@ -1,0 +1,256 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Physical Layer Security of 5G Wireless Networks: A Survey\\
+%{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
+%should not be used}
+%\thanks{Identify applicable funding agency here. If none, delete this.}
+}
+
+\author{\IEEEauthorblockN{Tanmayi Jandhyala}
+\IEEEauthorblockA{\textit{Faculty of Engineering} \\
+\textit{University of Waterloo}\\
+Waterloo, Canada \\
+tjandhyala@uwaterloo.ca}
+}
+
+\maketitle
+\thispagestyle{plain}
+\pagestyle{plain}
+\begin{abstract}
+Security is established in wireless communication systems apart from cryptographic methods that rely on mathematical capabilities of an attacker Eve, who can be active or passive. The motivation behind this is that channel security can be achieved even when Eve has a system that is computationally powerful, in which case they would be able to break the prevalent cryptographic systems employed on the application level of the communication channel. With the use of Physical Layer Security mechanisms, which work by utilising the randomness of a transmission channel to establish security, or any intelligently designing transmit coding strategies. Researchers and network designers are driven to develop new solutions that can meet the demanding requirements of ultra-high data rates, ultra-wide radio coverage, support for a massive number of connected devices, ultra-low latency, and energy efficiency. The fifth generation of wireless networks (5G) is expected to address these challenges by using intelligent and efficient technologies. However, 5G networks face significant challenges in terms of reliability, security, and efficiency. Security is one of the fundamental issues that must be addressed in 5G networks to ensure the security of wireless communication. This survey paper aims to classify 5G technologies and the potential attacks on 5G wireless networks to draw conclusions about current work in physical layer security for 5G, and to establish future scope in security for wireless systems in the physical layer
+\end{abstract}
+
+\begin{IEEEkeywords}
+Physical Layer Security (PLS), Jamming, Eavesdropping, massive MIMO, mmWave, Frequency Division Duplexing (FDD), Time Division Duplexing (TDD).
+\end{IEEEkeywords}
+
+\section{Introduction}
+The current wireless communication systems are facing capacity saturation due to the increasing demands for their applications and the exponential growth of connected users. As a result, researchers and network designers are motivated to devise new solutions that can provide ultra-high data rates, ultra-wide radio coverage, support for a massive number of connected devices, ultra-low latency, and energy efficiency. The fifth generation of wireless networks (5G) aims to address these challenges by utilizing intelligent and efficient technologies, and it is expected to bring significant advancements in meeting these stringent requirements. However, 5G networks need to overcome major challenges concerning reliability, security, and efficiency. The security of wireless communication is one of the fundamental issues that must be addressed in 5G networks.
+
+Wireless networking has experienced rapid growth, as shown by the widespread deployment of various wireless networks, ranging in size from wireless personal area networks (WPANs) to wide area networks (WWANs).  Additionally, these wireless networks can be deployed in different settings, including local area networks (WLANs) and metropolitan area networks (WMANs). These networks can take different forms, including cellular networks, ad hoc networks, and mesh networks, and can be designed for specific purposes, such as vehicular communication networks and sensor networks. The primary security issue with deploying wireless network systems is that they work through electromagnetic radiation in open space [1]. While this has made them rapidly scalable, it is not difficult for eavesdroppers and active attackers to intrude into the systems and weaken their security. While there have been key-sharing strategies and models proposed to avoid node-injection attacks in sensor and vehicular networks in particular, implementing security features in the physical layer itself would prove the cryptographic algorithms further integrated into networks to improve the overall security of any wireless network channel.
+
+Some of the security issues that can arise in wireless networks in WLANS and 5G Networks are as mentioned below [3]:
+
+Deauthentication - Physical layer security techniques can be employed to combat deauthentication attacks on WLANs. Such attacks aim to circumvent the authorization mechanism of WLANs and acquire authorized wireless users' identities or deploy rogue access points. Physical layer security can thwart these attacks by implementing measures such as frequency hopping, channel inversion, or spreading codes, which prevent attackers from falsifying MAC or IP addresses, or from deploying unauthorized access points. Physical layer security can also detect the presence of rogue access points and alert network administrators to take the necessary steps to counter them. By safeguarding the physical layer of WLANs, it becomes increasingly challenging for attackers to undermine the authorization mechanism and infiltrate the network.
+
+Eavesdropping: An attacker may gain access to legitimate wireless traffic by compromising the wireless communication channel used by legitimate users. This provides the attacker with access to all information transmitted by the user. The following attacks fall into this category: (i) Traffic eavesdropping, where the attacker uses a network sniffer to eavesdrop on the entire WLAN traffic; (ii) Man-in-the-middle, where the attacker intercepts, modifies, and impersonates the communication between two parties who believe they have a secure channel by sitting in the middle; (iii) Network injection, where the attacker injects false network traffic into legitimate traffic to achieve malicious objectives; and (iv) Session hijacking, where the attacker steals a legitimate authenticated conversation session ID and takes control of the session.
+
+Jamming attacks: The attacker attempts to overload the bandwidth of the WLAN by sending excessive amounts of messages or high-frequency signals, resulting in legitimate traffic being overwhelmed. This category of attacks includes: (i) Denial-of-service (DoS) attacks where the attacker floods the network with high-frequency radio signals or messages to disrupt legitimate traffic from reaching its destination, and (ii) Spam attacks where the attacker floods the wireless channels with spam messages.
+
+\subsection{Security issues in 5G}
+The drivers for 5G, which aim to improve latency and throughput, are similar to those in 4G, but the introduction of new factors in 5G may affect security.
+Security mechanisms in 5G are similar to those in 4G and protect against passive attacks, but not against active attacks.
+5G is expected to introduce new trust models for authentication, accountability, and non-repudiation to accommodate new usage scenarios.
+The use of cloud computing and virtualization in 5G may raise new security concerns, particularly when third-party applications are hosted on the same hardware as service providers.
+The threat landscape is likely to evolve as more technologies link, which could affect public safety and raise privacy concerns.
+The larger threat space and use of new low-cost technologies may lead to more attacks on the radio network, and 5G should consider implementing more flexible security mechanisms to address virtualization and cloud security.
+
+
+\section{Motivation}
+
+%\subsection{Maintaining the Integrity of the Specifications}
+
+The importance of potential applications has brought physical layer security back into focus as a significant area of research in information and communication theory. The concept of perfectly secret communication has been explored since the pioneering works of Wyner and Csiszár and Körner. It has been demonstrated that noisy communication channels offer opportunities for such communication as long as the legitimate user has a signal-to-noise ratio (SNR) advantage over the eavesdropper. It has also been shown that a positive secrecy capacity (SC) can be guaranteed in situations where the eavesdropper's channel is generally a degraded version of the primary channel [5].
+
+While Shannon’s secrecy model of key-sharing algorithms work incredibly well for cryptographic implementations [2], it is hard for every participating node on a network system to have the computational capacity required to deploy complex cryptographic algorithms and use them effectively. Some vulnerabilities in wireless systems that arise due to the sole dependency on cryptographic algorithms are listed below:
+
+Weak encryption: Wireless networks rely on encryption algorithms to protect data in transit. However, if the encryption algorithm used is weak or outdated, it can be vulnerable to attacks such as brute force attacks or cryptographic attacks that can compromise the security of the network.
+Key management: The security of wireless networks also relies on the proper management of cryptographic keys. If keys are not managed properly, it can lead to vulnerabilities such as key compromise, key disclosure, and unauthorized key usage.
+Man-in-the-middle attacks: Wireless networks can be vulnerable to man-in-the-middle attacks, where an attacker intercepts communications between two devices and can modify, read, or inject data into the communication stream. Cryptographic mechanisms such as SSL/TLS can protect against such attacks, but if improperly implemented or if a weak cryptographic algorithm is used, it can still be vulnerable.
+Rogue access points: Rogue access points are unauthorized wireless access points that are set up to look like legitimate access points. They can be used by attackers to steal sensitive data or launch attacks. Cryptographic mechanisms such as WPA2 can protect against rogue access points, but if a weak passphrase is used or if the access point is improperly configured, it can still be vulnerable.
+Cryptographic backdoors: Some wireless networks may include cryptographic backdoors, which are intentionally inserted weaknesses in cryptographic mechanisms that can be exploited by attackers. These backdoors can be inserted by manufacturers or government agencies, and can compromise the security of the network.
+
+The secrecy capacity of a wireless system refers to the maximum amount of information that can be transmitted securely from a transmitter to a legitimate receiver in the presence of an eavesdropper, who attempts to intercept the transmission. It is the difference between the capacity of the wireless channel between the transmitter and the legitimate receiver, and the capacity of the channel between the transmitter and the eavesdropper. In other words, it represents the amount of information that can be transmitted to the legitimate receiver while keeping the information confidential from the eavesdropper.
+
+\section{Threat Model}
+This survey, in light of the above attacks, discusses the issue of secrecy and confidentiality in a basic network with three components: a transmitter, a legitimate receiver, and an unauthorized receiver (also called an eavesdropper or wiretapper). The transmitter wants to send a private message to the legitimate receiver, but the presence of the eavesdropper creates a security problem [4]. The transmitter's knowledge of the eavesdropper's channel state information (CSI) is crucial in determining the optimal transmission scheme.
+
+To occur, these attacks typically require the wireless communication system to be in an operational state, with legitimate users (LUs) and attackers as actors involved in the system. The LUs are the intended users of the wireless network and transmit/receive data using the network. The attackers are individuals or entities that attempt to compromise the security of the wireless network by performing active or passive attacks. The system also involves a set of wireless protocols, antennas, channels, and wireless signals that are being transmitted and received between the LUs and the attackers. The state of the system can also be affected by the physical environment, such as interference from other wireless signals and obstacles that can affect signal strength and quality.
+
+In this survey, the attacks that are discussed are broadly divided into two categories, as follows:
+
+\subsection{Active Attacks}\label{AA}
+
+\subsection{Passive Attacks}\label{AA}
+
+\section{Classification}%\label{AA}
+This survey aims to now highlight two major attacks and how they affect the working of WLAN and 5G networks. They are the active attack, which aims to alter the transmission information on a network channel, and a passive attack, which obtains information but does not change any of the data in the transmission process. In the field of wireless communication systems, physical layer security is an important research area that deals with the protection of confidential information being transmitted over wireless networks. This type of security approach focuses on exploiting the characteristics of the wireless channel to establish secure communication between legitimate transmitters and receivers, while keeping unauthorized users or eavesdroppers from accessing the transmitted information. 
+
+In wireless networks, the spatial, frequency, and time domains are different dimensions in which signals can be processed and manipulated. The spatial domain refers to the physical space in which signals propagate, and involves techniques such as antenna arrays and beamforming to manipulate the directionality and spatial characteristics of signals. The frequency domain refers to the range of frequencies that signals can occupy, and involves techniques such as frequency modulation and channel equalization to manipulate the frequency characteristics of signals. The time domain refers to the temporal characteristics of signals, and involves techniques such as time division multiplexing and cyclic prefix insertion to manipulate the timing and synchronization of signals.
+
+The spatial, frequency, and time domains are the main categories used to analyze and design physical layer security techniques in wireless systems. In the spatial domain, physical layer security can be achieved through techniques such as beamforming and null steering, which take advantage of the directional properties of the antenna to improve security. In the frequency domain, physical layer security can be implemented by using techniques such as frequency hopping and spreading codes, which can mitigate the effects of frequency selective fading and reduce the possibility of attacks in certain frequency bands. In the time domain, physical layer security techniques such as cooperative jamming and artificial noise injection can be used to manipulate the temporal properties of the wireless channel and confuse potential eavesdroppers. These techniques have become increasingly important in the context of wireless LAN (WLAN) and 5G networks, where the need for secure communication has become a critical requirement.
+
+The emergence of fifth generation (5G) communication technologies, including massive multiple-input-multiple-output (MIMO), millimeter wave (mmWave), and nonorthogonal multiple access (NOMA), has enabled numerous Internet of Things (IoT) applications. These technologies are becoming increasingly prevalent in both industrial and daily life applications, making the security and privacy of 5G IoT wireless networks crucial. Physical-layer security (PLS) is a promising wireless security technique for IoT, as it leverages the fundamental characteristics or principles of the communication medium to protect information.
+
+This survey paper aims to bring to light some of the major research on passive and active attacks that motivates the need for implementing strong physical layer security measures in the context of 5G. For this benefit, the author tries to classify the attacks in various domains for 5G technologies and then match with the attack and prevention mechanisms that were previously proposed. The author relates each of these attacks to their corresponding threat models mentioned in Section III.
+\subsection{Spatial Domain}
+
+\begin{itemize}
+    \item Jamming: the attacker emits strong radio signals to disrupt or interfere with legitimate transmissions in a specific physical location.
+    \item Spoofing: the attacker creates a fake access point that appears to be a legitimate network to lure users to connect and steal their information.
+    \item Eavesdropping: An attacker listens in on the communication between legitimate users without modifying the signal.
+    \item Interception: An attacker intercepts the transmission between legitimate users by positioning themselves between the transmitter and receiver.
+
+\end{itemize}
+
+\subsection{Frequency Domain}
+\begin{itemize}
+    \item Jamming: similar to the spatial domain, the attacker emits high-frequency signals that interfere with the legitimate signal in a specific frequency band.
+    \item Frequency hopping: the attacker jumps rapidly between different frequencies to avoid detection and disrupt the legitimate signal.
+    \item Spectrum analysis: An attacker can use spectrum analysis tools to observe the frequency bands in use and gain information about the communication taking place.
+    \item Traffic analysis: An attacker can analyze the traffic patterns to identify sensitive information being transmitted, even without decrypting the message.
+
+
+\end{itemize}
+
+\subsection{Time Domain}
+\begin{itemize}
+    \item Replay attacks: the attacker records a legitimate message and replays it at a later time to cause confusion or gain unauthorized access.
+    \item Delay attacks: the attacker introduces a delay in the transmission of legitimate messages, causing disruptions or denial of service.
+    \item Replay attack: An attacker records a legitimate transmission and later replays it in order to gain access to the network.
+    \item Delay attack: An attacker introduces a delay in the transmission, which can be used to disrupt the communication or steal information.
+\end{itemize}
+
+\begin{table}[htbp]
+\caption{Classification of Attacks}
+\begin{center}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Threat Model}&\multicolumn{3}{|c|}{\textbf{Physical Layer Domains}} \\
+%\textbf{(Attack Type)}
+\cline{2-4} 
+&\textbf{\textit{Space}}& \textbf{\textit{Frequency}}& \textbf{\textit{Time}} \\
+\hline
+A: Active Attacks&Jamming, Spoofing &Jamming, Frequency Hopping & Replay, Delay  \\
+\hline
+B: Passive Attacks&Eavesdropping, Interception &Spectrum Analysis, Traffic Analysis & Replay, Delay  \\
+\hline
+%\multicolumn{4}{l}{$^{\mathrm{a}}$Sample of a Table footnote.}
+\end{tabular}
+}
+\label{tab1}
+\end{center}
+\end{table}
+
+\section{Literature Survey}
+Some critical technological features of 5G Wireless Networks that require physical layer security mechanisms have been identified as follows. As part of the survey, we also try to categorise them according to their physical layer domains.
+
+Some technologies that drive 5G wireless networks are as below, they are categorised based on the domain in which they are mostly implemented. It is to be noted that there can always be an overlap, and this classification is only to relate the attacks to the way in which they are deployed.
+
+\subsection*{Spatial Domain}
+\begin{itemize}
+    \item Massive MIMO (multiple-input, multiple-output)
+\item Beamforming and beam steering
+\item Spatial multiplexing and diversity techniques
+\item Interference management and coordination
+\end{itemize}
+
+\subsection*{Frequency Domain}
+\begin{itemize}
+    \item Millimeter-wave frequencies (mmWave) for higher bandwidths
+\item Carrier aggregation for combining multiple frequency bands
+\item Orthogonal frequency-division multiplexing (OFDM) for efficient spectrum use
+\item Dynamic spectrum access and sharing
+\end{itemize}
+
+\subsection*{Time Domain}
+\begin{itemize}
+\item Shorter transmission time intervals for lower latency
+\item Ultra-reliable low latency communication (URLLC)
+\item Time-division duplex (TDD) and frequency-division duplex (FDD) modes
+\item Hybrid automatic repeat request (HARQ) for efficient error correction and retransmission.
+\end{itemize}
+
+For the purpose of this survey, the author describes some of the above technologies and recent relevant work in the light of improving PLS techniques to safeguard from the mentioned attacks [10]. The 5G Technologies that are mentioned for their PLS techniques are as below.
+\begin{itemize}
+    \item Massive MIMO: This technology uses a large number of antennas at the base station to increase the capacity and efficiency of wireless communication systems. Massive MIMO can improve physical layer security by providing spatial diversity and enhancing the resistance to eavesdropping attacks.
+    \item Beamforming: Beamforming is a technique used to focus radio waves in a specific direction. It is used in wireless communication systems to increase the signal strength and reduce interference. Beamforming can improve physical layer security by directing the signal towards the intended receiver and away from eavesdroppers.
+    \item mmWave: Millimeter-wave (mmWave) technology uses a high frequency band of the radio spectrum to provide high-speed wireless communication. mmWave can improve physical layer security by providing high directional antenna gain and reducing the range of the communication link, which makes it difficult for eavesdroppers to intercept the signal.
+    \item OFDM: Orthogonal frequency-division multiplexing (OFDM) is a method used to transmit digital data over radio waves. OFDM can improve physical layer security by using a large number of subcarriers to spread the signal over a wide bandwidth, making it difficult for eavesdroppers to intercept the signal.
+    \item TDD and FDD: Time division duplexing (TDD) and frequency division duplexing (FDD) are two methods used for transmitting data over a wireless communication link. TDD and FDD can improve physical layer security by allowing the transmitter and receiver to use different frequencies or time slots, which makes it difficult for eavesdroppers to intercept the signal.
+    \item HARQ: Hybrid automatic repeat request (HARQ) is a method used in wireless communication systems to improve the reliability of data transmission. HARQ can improve physical layer security by retransmitting data packets that are lost or corrupted during transmission, making it more difficult for eavesdroppers to intercept the signal.
+\end{itemize}
+
+\subsection{Attacks and their Detection in Massive MIMO and Beamforming}
+
+Kapetanovic et al. [7] provides an overview of physical layer security in massive MIMO systems. The authors discuss the potential for eavesdropping and active attacks in massive MIMO systems, and describe various techniques that can be used to counter these attacks. The paper covers several different types of attacks, including passive eavesdropping, active attacks on pilot signals, active attacks on data transmissions, and more. The authors also discuss some of the challenges that arise in securing massive MIMO systems, including the need to maintain high throughput while ensuring security, the potential for interference between legitimate users, and the difficulty of detecting attacks in large-scale systems. Overall, the paper provides a useful introduction to the topic of physical layer security in massive MIMO systems, and highlights some of the key issues and techniques that researchers are exploring in this area. 
+
+Sharma et al. [8] proposed The Cooperative Jamming (CJ) is a technique to enhance the Physical Layer Security (PLS) of wireless communication systems. A cooperative jamming-assisted wireless network includes a transmitter that sends signals to the legitimate receiver, and a jammer that sends a jamming signal to the wiretap channel used by the eavesdropper to degrade it and improve the PLS. In addition, cooperative relaying can be used in conjunction with cooperative jamming, where a relay node is utilized to transmit data from the transmitter and legitimate receiver. The authors of the paper conducted an analysis of current beamforming-based techniques for preserving security and privacy. Beamforming is seen as a reliable method for improving transmission efficiency and security performance, thanks to its spatial flexibility and diversity gains. To ensure physical layer security for 5G networks and beyond, proper design of transmit beamforming is necessary. The use of beamforming-based techniques in physical layer security can enhance the energy efficiency, data privacy, and spectral efficiency of wireless communication. Combining beamforming with artificial noise, cooperative jamming, and channel coding techniques has proven to be more effective in enhancing 5G security. The paper discusses the different dimensions of the survey's taxonomy in the next section.
+
+Zheng et al. [9] provide an extensive survey of jamming attacks and countermeasures in non-regenerative cooperative multi-hop wireless networks. The authors first discuss the concept of cooperative communication, and then provide a detailed overview of different types of jamming attacks, including constant jamming, reactive jamming, and intelligent jamming. The paper then goes on to describe different countermeasures that can be used to mitigate the effects of jamming attacks, such as power control, frequency hopping, spread spectrum, and channel hopping. The authors also discuss physical layer security techniques that can be used to protect against jamming attacks, such as artificial noise and cooperative jamming. In addition, the paper presents a taxonomy of jamming attacks and countermeasures in non-regenerative cooperative multi-hop wireless networks, which can help researchers and practitioners to better understand the different aspects of jamming attacks and the corresponding countermeasures.
+
+Abdalla et al. [11] propose an approach to enhance the security of 5G networks using unmanned aerial vehicles (UAVs). They provide a detailed overview of their proposed approach, including the deployment of the UAVs and the types of sensors used.
+The authors highlight the challenges faced by 5G networks, such as increased complexity, new attack surfaces, and the potential for large-scale attacks. They propose the use of UAVs to complement existing security mechanisms and provide an additional layer of protection. The proposed approach involves the deployment of UAVs equipped with various sensors, such as radio frequency (RF) scanners, cameras, and microphones, to monitor the 5G network infrastructure and detect any anomalies or suspicious activity. The UAVs can also be used to perform penetration testing and simulate attacks to identify vulnerabilities in the network.
+In the event of an attack, the UAVs can assist in mitigating the attack by providing real-time data to the network operations center (NOC) and supporting recovery efforts. The UAVs can also be used to perform reconnaissance and gather intelligence about the attackers, which can aid in identifying and prosecuting them. The authors propose using a swarm of UAVs to monitor the network and detect potential attacks. Each UAV would be equipped with a set of sensors, including cameras, microphones, and environmental sensors, to collect data on network activity and identify any anomalies. The UAVs would communicate with each other and a central control station to share data and coordinate their actions.
+The authors discuss the potential benefits of their approach, such as the ability to quickly detect and respond to attacks, and the flexibility to adapt to changing network conditions. They also address the limitations of the approach, such as the need for a large number of UAVs to effectively cover a wide area and the challenges of managing and coordinating the UAV swarm. To support their proposal, the authors compare their approach with existing security mechanisms, such as intrusion detection systems and firewalls. They argue that their approach offers several advantages over these traditional methods, including the ability to detect attacks in real-time, the ability to cover a large area, and the ability to respond quickly to threats.
+
+\subsection{Attacks and their prevention in OFDM and mmWave}
+
+Melki et al. [12] provide an overview of the state-of-the-art techniques used for securing Orthogonal Frequency Division Multiplexing (OFDM) systems at the physical layer. The authors provide a comprehensive literature review of the existing techniques, ranging from conventional methods to more recent developments in the field. The paper discusses different types of attacks, such as eavesdropping and jamming, and presents the main OFDM physical layer security schemes, including Artificial Noise (AN), Beamforming, and Cooperative Jamming (CJ).
+The paper then goes on to describe different physical layer security schemes that have been proposed for OFDM systems. The first scheme discussed is Artificial Noise (AN), which involves adding random noise to the transmitted signal to confuse eavesdroppers. The authors explain the different types of AN, such as fixed and adaptive, and discuss the benefits and limitations of this approach.
+The authors then discuss the limitations and challenges of the proposed approaches, including implementation complexity, channel state information requirements, and the potential for increased latency. The paper also provides an overview of the current research directions and future trends in the field, including the use of machine learning and cognitive radio techniques to improve the security of OFDM systems.
+the authors discuss Cooperative Jamming (CJ), which involves using friendly nodes to transmit jamming signals to interfere with the signals received by eavesdroppers. The authors explain the different types of CJ, such as Amplify-and-Forward (AF) and Decode-and-Forward (DF), and discuss the benefits and limitations of this approach.
+
+Jameel et al. [13] identify some of the key challenges and research gaps in the field of cooperative relaying and jamming for physical layer security in mmWave and OFDM systems. One such challenge is the impact of hardware impairments, which can significantly affect the performance of cooperative relaying and jamming schemes. The paper suggests that future research should focus on developing efficient algorithms and techniques to mitigate the effects of hardware impairments.
+Another challenge highlighted in the paper is the need for efficient resource allocation schemes, which can optimize the use of available resources such as power, bandwidth, and antennas. The paper suggests that future research should focus on developing efficient resource allocation schemes that can balance the trade-offs between security and performance metrics.
+Overall, while the paper does not provide specific solutions to the challenges and research gaps identified, it provides a comprehensive overview of the state-of-the-art in the field of cooperative relaying and jamming for physical layer security in mmWave and OFDM systems, and suggests areas where future research can be focused.
+
+Sanchez et al. [14] provide a comprehensive survey of physical layer security for 5G wireless networks in the context of mmWave and attacks. They discuss the potential vulnerabilities of mmWave-based 5G networks and present the existing physical layer security mechanisms, including beamforming, artificial noise, and physical layer encryption.
+The authors also explore the recent developments and open research issues in physical layer security for 5G networks, such as the impact of mmWave propagation characteristics on security, the need for efficient key management schemes, and the trade-offs between security and performance metrics.
+Furthermore, the authors also analyze different types of attacks, such as eavesdropping, jamming, and spoofing, and present the corresponding physical layer security solutions for each type of attack. The authors conclude that physical layer security is a crucial aspect of 5G networks due to the high data rates and large number of connected devices. They identify various security challenges and attacks specific to mmWave and OFDM systems and survey different physical layer security mechanisms that can be employed to address these challenges. They also highlight the need for more efficient and effective security mechanisms and recommend further research in areas such as AI-based security, cooperative jamming, and joint optimization of security and performance metrics. Overall, the paper provides a comprehensive overview of physical layer security for 5G wireless networks and serves as a useful resource for researchers and practitioners in the field.
+The paper discusses the potential of AI-based security, cooperative jamming, and joint optimization of security for physical layer security in 5G wireless networks. AI-based security refers to the use of machine learning techniques to detect and mitigate security threats in real-time. The authors suggest that AI-based security can improve the accuracy and efficiency of threat detection and response.
+Cooperative jamming involves multiple nodes working together to jam the signals of an eavesdropper, thereby improving the security of the communication. The authors discuss the benefits and limitations of different cooperative jamming techniques, such as relay-based cooperative jamming and cognitive radio-based cooperative jamming.
+Joint optimization of security refers to the optimization of both security and performance metrics, such as signal-to-noise ratio (SNR) and data rate. The authors suggest that joint optimization can lead to better trade-offs between security and performance, and discuss various approaches to achieve this, such as joint power allocation and beamforming optimization.
+
+\subsection{Attacks and their prevention in TDD and FDD}
+Khan et al. in their  paper discusse the security and privacy issues related to 5G technologies, such as TDD-based systems and replay attacks. The authors propose several potential solutions to address these issues, including authentication and key management protocols, physical layer security techniques, and intrusion detection systems. They also discuss recent advancements in 5G security, such as blockchain-based security solutions and machine learning-based intrusion detection systems.
+In particular, the paper emphasizes the importance of addressing replay attacks in 5G systems, which can compromise the confidentiality and integrity of the communication. The authors suggest the use of countermeasures such as message authentication codes and time-based or sequence-based protocols to prevent replay attacks.
+In the context of TDD-based 5G systems, the paper discusses the potential threats of replay attacks and emphasizes the importance of implementing countermeasures to prevent such attacks. The authors suggest the use of message authentication codes (MACs) to ensure the authenticity of messages exchanged between users. A MAC is a cryptographic checksum that is generated using a shared secret key and appended to a message. The receiver can then verify the authenticity of the message by recomputing the MAC using the same key and comparing it with the MAC received with the message. This ensures that the message has not been modified or tampered with in transit.
+Moreover, the paper highlights the need for time-based or sequence-based protocols to prevent replay attacks. In time-based protocols, each message is associated with a timestamp that indicates the time when the message was generated. The receiver can then verify the authenticity of the message by ensuring that the timestamp falls within an acceptable range. Similarly, in sequence-based protocols, each message is associated with a sequence number that is incremented for each message. The receiver can then verify the authenticity of the message by ensuring that the sequence number is valid and has not been duplicated or skipped.
+In addition to replay attacks, the paper also emphasizes the need for secure and efficient authentication and key management protocols in TDD-based 5G systems. These systems are vulnerable to attacks such as eavesdropping and man-in-the-middle attacks, which can compromise the confidentiality and integrity of the communication. To prevent such attacks, the paper suggests the use of strong authentication and key management protocols that ensure the authenticity of users and the confidentiality of the keys used for communication.
+
+Ghourab et al. [16] discuss the interplay between physical layer security and blockchain technology in the context of 5G and beyond networks. It provides an overview of the existing literature on the topic and identifies the potential benefits and challenges of integrating blockchain with physical layer security mechanisms. The paper also discusses the use of blockchain for secure and efficient key management and authentication protocols, and highlights the need for further research in this area. Additionally, the authors provide a comprehensive survey of the existing literature on physical layer security in FDD and TDD-based systems, and highlight the importance of addressing various security challenges such as delay and relay attacks.
+The paper emphasizes that key management is a crucial aspect of ensuring the security of FDD-based systems. FDD-based systems use separate frequencies for uplink and downlink transmissions, which makes them more vulnerable to man-in-the-middle attacks and insider attacks. For instance, an attacker can intercept the key exchange messages during the initial authentication phase and use them to launch man-in-the-middle attacks. Similarly, an insider attack can occur when a legitimate user with authorized access to the network intentionally or unintentionally shares confidential information with unauthorized users.
+To address these challenges, the paper proposes efficient and secure key management protocols that can mitigate the risk of such attacks. These protocols should ensure that only authorized users can access the network and exchange information. The authors suggest the use of blockchain technology for secure and decentralized key management in FDD-based systems. The blockchain-based key management can provide secure authentication and key exchange mechanisms that are resistant to attacks and can prevent unauthorized access to the network. Additionally, blockchain can also ensure the integrity and confidentiality of the transmitted data by enabling secure data sharing and verification mechanisms.
+
+
+\section{Conclusion and Future Directions}
+
+This survey intends to make the classification useful towards researching about physical layer security for various 5G technologies and in that regard, work on their individual demands. One important conclusion is that most of these works that claim to work with AI and ML models to boost physical layer security actually are very challenging to implement in real-life because of the level of difficulty of proving the security efficiency of these researched mechanisms. 
+
+Although the pervasive use of AI can benefit security, it also presents new challenges and threats. The paper envisions PLS as a means to address security threats in future 6G networks and suggests that applying AI technology can improve the PLS paradigm compared to conventional security technologies. In contrast to 5G, which has adopted a security-by-design approach, 6G should also address privacy-by-design in a comprehensive 360-degree security approach.
+
+
+\begin{thebibliography}{00}
+
+\bibitem{b1}Xiao, Y., Chen, H., Yang, S. et al. Wireless Network Security. J Wireless Com Network 2009, 532434 (2009). 
+\bibitem{b2} C. E. Shannon, “Communication theory of secrecy systems,” Bell Syst. Tech. J., vol. 28, no. 4, pp. 656–715, Oct. 1949.
+\bibitem{b3} S. Baraković et al., "Security issues in wireless networks: An overview," 2016 XI International Symposium on Telecommunications (BIHTEL), Sarajevo, Bosnia and Herzegovina, 2016, pp. 1-6, doi: 10.1109/BIHTEL.2016.7775732.
+\bibitem{b4} A. Mukherjee, S. A. A. Fakoorian, J. Huang and A. L. Swindlehurst, "Principles of Physical Layer Security in Multiuser Wireless Networks: A Survey," in IEEE Communications Surveys & Tutorials, vol. 16, no. 3, pp. 1550-1573, Third Quarter 2014, doi: 10.1109/SURV.2014.012314.00178.
+\bibitem{b5} A. Chorti, S. M. Perlaza, Z. Han and H. V. Poor, "Physical layer security in wireless networks with passive and active eavesdroppers," 2012 IEEE Global Communications Conference (GLOBECOM), Anaheim, CA, USA, 2012, pp. 4868-4873.
+\bibitem{b6} Weidong Fang, Fengrong Li, Yanzan Sun, Lianhai Shan, Shanji Chen, Chao Chen, Meiju Li, "Information Security of PHY Layer in Wireless Networks", Journal of Sensors, vol. 2016, Article ID 1230387, 10 pages, 2016. https://doi.org/10.1155/2016/1230387. 
+\bibitem{b7} D. Kapetanovic, G. Zheng and F. Rusek, "Physical layer security for massive MIMO: An overview on passive eavesdropping and active attacks," in IEEE Communications Magazine, vol. 53, no. 6, pp. 21-27, June 2015, doi: 10.1109/MCOM.2015.7120012.
+\bibitem{b8}Himanshu Sharma, Neeraj Kumar, Rajkumar Tekchandani, Physical layer security using beamforming techniques for 5G and beyond networks: A systematic review, Physical Communication, Volume 54, 2022, 101791, ISSN 1874-4907.
+\bibitem{b9} T. -X. Zheng, H. -M. Wang, Q. Yang and M. H. Lee, "Safeguarding Decentralized Wireless Networks Using Full-Duplex Jamming Receivers," in IEEE Transactions on Wireless Communications, vol. 16, no. 1, pp. 278-292, Jan. 2017, doi: 10.1109/TWC.2016.2622689.
+\bibitem{b10}E. Björnson, E. G. Larsson and T. L. Marzetta, "Massive MIMO: ten myths and one critical question," in IEEE Communications Magazine, vol. 54, no. 2, pp. 114-123, February 2016, doi: 10.1109/MCOM.2016.7402270. 
+\bibitem{b11}A. S. Abdalla, K. Powell, V. Marojevic and G. Geraci, "UAV-Assisted Attack Prevention, Detection, and Recovery of 5G Networks," in IEEE Wireless Communications, vol. 27, no. 4, pp. 40-47, August 2020, doi: 10.1109/MWC.01.1900545.
+\bibitem{b12} Reem Melki, Hassan N. Noura, Mohammad M. Mansour, Ali Chehab,
+A survey on OFDM physical layer security, Physical Communication, Volume 32, 2019, Pages 1-30, ISSN 1874-4907.
+\bibitem{13} F. Jameel, S. Wyne, G. Kaddoum and T. Q. Duong, "A Comprehensive Survey on Cooperative Relaying and Jamming Strategies for Physical Layer Security," in IEEE Communications Surveys & Tutorials, vol. 21, no. 3, pp. 2734-2771, thirdquarter 2019, doi: 10.1109/COMST.2018.2865607.
+\bibitem{b14} Sánchez, J.D.V., Urquiza-Aguiar, L., Paredes, M.C.P. et al. Survey on physical layer security for 5G wireless networks. Ann. Telecommun. 76, 155–174 (2021). https://doi.org/10.1007/s12243-020-00799-8.
+\bibitem{b15} R. Khan, P. Kumar, D. N. K. Jayakody and M. Liyanage, "A Survey on Security and Privacy of 5G Technologies: Potential Solutions, Recent Advancements, and Future Directions," in IEEE Communications Surveys & Tutorials, vol. 22, no. 1, pp. 196-248, Firstquarter 2020, doi: 10.1109/COMST.2019.2933899.
+\bibitem{b16} E. M. Ghourab, A. Mansour, M. Azab, M. Rizk and A. Mokhtar, "Towards physical layer security in Internet of Things based on reconfigurable multiband diversification," 2017 8th IEEE Annual Information Technology, Electronics and Mobile Communication Conference (IEMCON), Vancouver, BC, Canada, 2017, pp. 446-450, doi: 10.1109/IEMCON.2017.8117197.
+ \end{thebibliography}
+\end{document}
